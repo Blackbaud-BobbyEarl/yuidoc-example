@@ -1,0 +1,10 @@
+{
+	"name": "Mount Sinai",
+	"description": "Blackbaud NetCommunity customizations developed for the Mount Sinai Hospital Foundation.",
+	"options": {
+		"version": "1.0.0",
+		"outdir": "documentation-internal/",
+		"themedir" : "../_yuidoc-themes/blackbaud-internal",
+		"helpers" : []
+	}
+}
