@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>Mount Sinai: BBI.customization.MountSinaiCards - Mount Sinai</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="../assets/img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse bb-navbar" role="navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="http://www.blackbaud.com" target="_blank" class="navbar-brand"><img src="../assets/img/logo-white.png" alt="Blackbaud" /></a>
+                    <a href="http://support.blackbaud.com" target="_blank" class="btn btn-default btn-xs navbar-btn pull-right">Blackbaud Support</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="jumbotron bb-jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2><a href="../">Mount Sinai Documentation</a></h2>
+                    <p>Blackbaud NetCommunity customizations developed for the Mount Sinai Hospital Foundation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h4>&nbsp;</h4>
+            </div>
+            <div class="col-md-9">
+                <h4>BBI.customization.MountSinaiCards</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <ul class="bb-sidebar-nav nav nav-pills nav-stacked">
+
+    <li class=""><a href="../classes/BBI.customization.MountSinai.html">BBI.customization.MountSinai</a></li>
+
+    <li class="active"><a href="../classes/BBI.customization.MountSinaiCards.html">BBI.customization.MountSinaiCards</a></li>
+
+</ul>
+
+<!--
+<ul class="dropdown-menu" role="menu">
+    
+        <li><a href="../classes/BBI.customization.MountSinai.html">BBI.customization.MountSinai</a></li>
+    
+        <li><a href="../classes/BBI.customization.MountSinaiCards.html">BBI.customization.MountSinaiCards</a></li>
+    
+</ul>
+-->
+            </div>
+            <div class="col-md-9">
+                <!-- This gets automatically parsed and added to the nav -->
+<div class="class-description">
+    <h1>Usage</h1>
+<p>The Mount Sinai Cards customization was developed to customize the BBNC eCard part.  The ultimate goal was to use the eCard part, but for tranditional cards.</p>
+<p>Listed below is an example of what you would include in an <strong>unformatted text part</strong>, and some example settings.
+<strong><a href="#tab-configuration" class="bb-tab-link">View a complete list of configuration options</a>.</strong></p>
+<pre class="code prettyprint"><code>BBI.customization.MountSinaiCards({
+  email: &#39;new-employee@your-domain.com&#39;,
+  titles: [
+      &#39;Custom Image Title 1&#39;,
+      &#39;Custom Image Title 2&#39;
+  ],
+  language: {
+      &#39;preview-message&#39;: &#39;Custom preview message.&#39;,
+      &#39;greeting-standard&#39;: [
+          &#39;Custom Greeting 1&#39;,
+          &#39;Custom Greeting 2&#39;
+      ]
+  }
+});</code></pre>
+<h1>Revisions</h1>
+<h2>Version 1.0.0 (December 1, 2013) Bobby Earl</h2>
+<ul>
+<li>Initial development.</li>
+</ul>
+<h2>Version 1.0.1 (December 6, 2013) Bobby Earl</h2>
+<ul>
+<li>Added documentation.</li>
+</ul>
+
+</div>
+
+
+    <ul class="nav nav-tabs bb-nav-tabs">
+        <li><a href="#tab-configuration">Configuration</a></li>
+    </ul>
+    <div class="tab-content bb-tab-content">
+        <div class="tab-pane" id="tab-configuration">
+            <div class="table-responsive">
+                <table class="table bb-properties-table table-hover table-striped">
+                    <tr>
+                        <th>Property</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">email</span>
+    </td>
+    <td>
+        <p>If recipient addresses provided, send them to this address.</p>
+
+    </td>
+    <td>
+        bobby.earl@blackbaud.com
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">language</span>
+    </td>
+    <td>
+        <p>Any language used in the customization that&#39;s <strong>not</strong> accessible via the eCard part&#39;s language tab.</p>
+
+    </td>
+    <td>
+        
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">language.address-error</span>
+    </td>
+    <td>
+        
+    </td>
+    <td>
+        Please enter an address.
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">language.address-label</span>
+    </td>
+    <td>
+        
+    </td>
+    <td>
+        Address(es):
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">language.greeting-custom-error</span>
+    </td>
+    <td>
+        
+    </td>
+    <td>
+        Please enter a custom greeting.
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">language.greeting-custom-label</span>
+    </td>
+    <td>
+        
+    </td>
+    <td>
+        Custom Greeting:
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">language.greeting-error</span>
+    </td>
+    <td>
+        
+    </td>
+    <td>
+        Please select a greeting type.
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">language.greeting-label</span>
+    </td>
+    <td>
+        
+    </td>
+    <td>
+        Greeting Type:
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">language.greeting-standard</span>
+    </td>
+    <td>
+        
+    </td>
+    <td>
+        []
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">language.greeting-standard-error</span>
+    </td>
+    <td>
+        
+    </td>
+    <td>
+        Please select a standard greeting.
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">language.greeting-standard-label</span>
+    </td>
+    <td>
+        
+    </td>
+    <td>
+        Standard Greeting:
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">language.next</span>
+    </td>
+    <td>
+        
+    </td>
+    <td>
+        Next
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">language.preview-message</span>
+    </td>
+    <td>
+        
+    </td>
+    <td>
+        In celebration of the holidays, <br />a donation has been made in your honour <br />to support the purchase of life-saving <br />infant ventilators in Mount Sinai Hospital's <br /> Neonatal Intensive Care Unit
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">language.quantity-error</span>
+    </td>
+    <td>
+        
+    </td>
+    <td>
+        Please enter a valid quantity.
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">language.quantity-label</span>
+    </td>
+    <td>
+        
+    </td>
+    <td>
+        Quantity:
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">language.quantity-max</span>
+    </td>
+    <td>
+        
+    </td>
+    <td>
+        To place a larger order, please contact Holly Laws at <a href="mailto:hlaws@mtsinai.on.ca">hlaws@mtsinai.on.ca</a> or 416-586-8203 ext. 3936.
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">language.recipeint-error</span>
+    </td>
+    <td>
+        
+    </td>
+    <td>
+        Please select a recipient.
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">language.recipient-email</span>
+    </td>
+    <td>
+        
+    </td>
+    <td>
+        Please ship the cards to my recipients on my behalf. I will send a document with complete names and address to <a href="mailto:hlaws@mtsinai.on.ca">hlaws@mtsinai.on.ca</a>.
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">language.recipient-label</span>
+    </td>
+    <td>
+        
+    </td>
+    <td>
+        Recipients:
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">language.recipient-myself</span>
+    </td>
+    <td>
+        
+    </td>
+    <td>
+        Please ship the unaddressed cards to me. I will include my address below.
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">language.recipient-recipients</span>
+    </td>
+    <td>
+        
+    </td>
+    <td>
+        Please ship the cards to my recipients on my behalf. I will include the recipient names and complete address below (this information can be pasted from a Word or Excel document).
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">language.sender-error</span>
+    </td>
+    <td>
+        
+    </td>
+    <td>
+        Please enter a sender name.
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">language.sender-help</span>
+    </td>
+    <td>
+        
+    </td>
+    <td>
+        If you enter your sender name as "John", that is how your card(s) will be signed. If you prefer additional text such as, "Love, John", "Your friend, John" or "Best wishes, John", please enter the appropriate parting remark above.
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">language.sender-label</span>
+    </td>
+    <td>
+        
+    </td>
+    <td>
+        Sender Name:
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">prices</span>
+    </td>
+    <td>
+        <p>Array of available prices.  Each item in the array should be an object with the following properties:</p>
+
+    </td>
+    <td>
+        
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">sessvarsKey</span>
+    </td>
+    <td>
+        <p>This key <strong>should</strong> be unique for each implementation of the customization.  Must use alphanumeric characters, hyphens and underscores.</p>
+
+    </td>
+    <td>
+        mount-sinai-holiday-cards-2013
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">titles</span>
+    </td>
+    <td>
+        <p>Title to prepend to each card displayed in BBI.customization.MountSinaiCards:step1:method.</p>
+
+    </td>
+    <td>
+        []
+    </td>
+</tr>
+
+                    
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="../assets/js/app.js"></script>
+</body>
+</html>

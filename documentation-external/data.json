@@ -1,0 +1,894 @@
+{
+    "project": {
+        "name": "Mount Sinai",
+        "description": "Blackbaud NetCommunity customizations developed for the Mount Sinai Hospital Foundation.",
+        "version": "1.0.0"
+    },
+    "files": {
+        "BBI.customization.MountSinai.js": {
+            "name": "BBI.customization.MountSinai.js",
+            "modules": {},
+            "classes": {
+                "BBI.customization.MountSinai": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "BBI.customization": 1
+            }
+        },
+        "BBI.customization.MountSinaiCards.js": {
+            "name": "BBI.customization.MountSinaiCards.js",
+            "modules": {},
+            "classes": {
+                "BBI.customization.MountSinaiCards": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "BBI.customization": 1
+            }
+        }
+    },
+    "modules": {},
+    "classes": {
+        "BBI.customization.MountSinai": {
+            "name": "BBI.customization.MountSinai",
+            "shortname": "BBI.customization.MountSinai",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "namespace": "BBI.customization",
+            "file": "BBI.customization.MountSinai.js",
+            "line": 1,
+            "description": "The Mount Sinai customization was developed to customize the BBNC donation form part.\n\n    BBI.customization.MountSinai({\n    \n    });\n\n<strong><a href=\"#tab-configuration\">View a complete list of settings</a></strong>",
+            "author": "Blackbaud - Bobby Earl - 2013-09-20",
+            "static": 1,
+            "requires": [
+                "jQuery",
+                "BBI.bbUtilities",
+                "sessvars"
+            ]
+        },
+        "BBI.customization.MountSinaiCards": {
+            "name": "BBI.customization.MountSinaiCards",
+            "shortname": "BBI.customization.MountSinaiCards",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "namespace": "BBI.customization",
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 4,
+            "description": "# Usage\nThe Mount Sinai Cards customization was developed to customize the BBNC eCard part.  The ultimate goal was to use the eCard part, but for tranditional cards.\n\nListed below is an example of what you would include in an <strong>unformatted text part</strong>, and some example settings.\n<strong><a href=\"#tab-configuration\" class=\"bb-tab-link\">View a complete list of configuration options</a>.</strong>\n\n    BBI.customization.MountSinaiCards({\n      email: 'new-employee@your-domain.com',\n      titles: [\n          'Custom Image Title 1',\n          'Custom Image Title 2'\n      ],\n      language: {\n          'preview-message': 'Custom preview message.',\n          'greeting-standard': [\n              'Custom Greeting 1',\n              'Custom Greeting 2'\n          ]\n      }\n    });\n\n# Revisions\n\n## Version 1.0.0 (December 1, 2013) Bobby Earl\n+ Initial development.\n\n## Version 1.0.1 (December 6, 2013) Bobby Earl\n+ Added documentation.",
+            "static": 1,
+            "author": "Blackbaud - Bobby Earl",
+            "requires": [
+                "jQuery",
+                "sessvars"
+            ]
+        }
+    },
+    "classitems": [
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 33,
+            "description": "Message character limit.",
+            "itemtype": "property",
+            "name": "limit",
+            "type": "Number",
+            "default": "180",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 40,
+            "description": "Default message.",
+            "itemtype": "property",
+            "name": "message",
+            "type": "String",
+            "default": "\"\"",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 47,
+            "description": "Placeholder text for the name field to use in a message.",
+            "itemtype": "property",
+            "name": "placeholder",
+            "type": "String",
+            "default": "\"__NAME__\"",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 54,
+            "description": "Default text to replace the placeholder with.",
+            "itemtype": "property",
+            "name": "placeholderText",
+            "type": "String",
+            "default": "\"Your Name\"",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 61,
+            "description": "Unique key for which form the customization is running on.",
+            "itemtype": "property",
+            "name": "form",
+            "type": "String",
+            "default": "\"mountsinai\"",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 68,
+            "description": "UI elements used in the customization.",
+            "itemtype": "property",
+            "name": "ui",
+            "type": "Object",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 74,
+            "description": "Validation summary element.",
+            "itemtype": "property",
+            "name": "ui.validation",
+            "type": "Object",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 80,
+            "description": "jQuery selector for the validation summary element.",
+            "itemtype": "property",
+            "name": "ui.validation.selector",
+            "type": "String",
+            "default": "\"div[id$=\"_ValidationSummary1\"] ul\"",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 87,
+            "description": "Label text for the validation element.",
+            "itemtype": "property",
+            "name": "ui.validation.label",
+            "type": "String",
+            "default": "\"Greeting: Required\"",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 95,
+            "description": "Comments element.",
+            "itemtype": "property",
+            "name": "ui.comments",
+            "type": "Object",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 101,
+            "description": "jQuery selector for the comments element.",
+            "itemtype": "property",
+            "name": "ui.comments.selector",
+            "type": "String",
+            "default": "\"input[id$=\"_434\"]\"",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 109,
+            "description": "Select element.",
+            "itemtype": "property",
+            "name": "ui.select",
+            "type": "Object",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 115,
+            "description": "Label text for the select element.",
+            "itemtype": "property",
+            "name": "ui.select.label",
+            "type": "String",
+            "default": "\"Choose your greeting type\"",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 123,
+            "description": "Greeting type element.",
+            "itemtype": "property",
+            "name": "ui.type",
+            "type": "Object",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 129,
+            "description": "jQuery ID for the greeting type element.",
+            "itemtype": "property",
+            "name": "ui.type.id",
+            "type": "String",
+            "default": "\"greeting-type\"",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 136,
+            "description": "Label text for the greeting type element.",
+            "itemtype": "property",
+            "name": "ui.type.label",
+            "type": "String",
+            "default": "\"Greeting Type:\"",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 143,
+            "description": "jQuery selector for the greeting type element's corresponding gift attribute.",
+            "itemtype": "property",
+            "name": "ui.type.attribute",
+            "type": "String",
+            "default": "\"select[id$=\"_433\"]\"",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 151,
+            "description": "Name element.",
+            "itemtype": "property",
+            "name": "ui.name",
+            "type": "Object",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 157,
+            "description": "jQuery ID for the name element.",
+            "itemtype": "property",
+            "name": "ui.name.id",
+            "type": "String",
+            "default": "\"greeting-name\"",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 164,
+            "description": "Label text for the name element.",
+            "itemtype": "property",
+            "name": "ui.name.label",
+            "type": "String",
+            "default": "\"First, Last or Family Name:\"",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 172,
+            "description": "Message element.",
+            "itemtype": "property",
+            "name": "ui.message",
+            "type": "Object",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 178,
+            "description": "jQuery ID for the message element.",
+            "itemtype": "property",
+            "name": "ui.message.id",
+            "type": "String",
+            "default": "\"greeting-message\"",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 185,
+            "description": "Label text for the message element.",
+            "itemtype": "property",
+            "name": "ui.message.label",
+            "type": "String",
+            "default": "\"Custom Message:\"",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 193,
+            "description": "Preview element.",
+            "itemtype": "property",
+            "name": "ui.preview",
+            "type": "Object",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 199,
+            "description": "jQuery ID for the preview element.",
+            "itemtype": "property",
+            "name": "ui.preview.id",
+            "type": "String",
+            "default": "\"greeting-preview\"",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 206,
+            "description": "Label text for the preview element.",
+            "itemtype": "property",
+            "name": "ui.preview.label",
+            "type": "String",
+            "default": "\"Preview:\"",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 214,
+            "description": "Count element.",
+            "itemtype": "property",
+            "name": "ui.count",
+            "type": "Object",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 220,
+            "description": "jQuery ID for the count element.",
+            "itemtype": "property",
+            "name": "ui.count.id",
+            "type": "String",
+            "default": "\"greeting-count\"",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 232,
+            "description": "Initializes the customization, only if not in editor mode.",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "init",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "{{#crossLink \"BBI.customization.MountSinai/_defaults:property\"}}View a complete list of settings{{/crossLink}}",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 305,
+            "description": "Create custom UI.",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "setup",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 371,
+            "description": "Update the preview and count.",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "update",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 409,
+            "description": "Display the correct fields",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "toggle",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 446,
+            "description": "Reset the fields to their default values",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "reset",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinai.js",
+            "line": 456,
+            "description": "Bind to keyup event for name and message fields.\nBind to change event for type select, clearing name and messages fields.",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "bind",
+            "class": "BBI.customization.MountSinai",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 54,
+            "description": "If recipient addresses provided, send them to this address.",
+            "itemtype": "property",
+            "name": "email",
+            "type": "String",
+            "default": "bobby.earl@blackbaud.com",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 61,
+            "description": "This key <strong>should</strong> be unique for each implementation of the customization.  Must use alphanumeric characters, hyphens and underscores.",
+            "itemtype": "property",
+            "name": "sessvarsKey",
+            "type": "String",
+            "default": "mount-sinai-holiday-cards-2013",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 68,
+            "description": "Array of available prices.  Each item in the array should be an object with the following properties:",
+            "itemtype": "property",
+            "name": "prices",
+            "type": "Object",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization",
+            "subprops": [
+                {
+                    "name": "min",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "max",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "price",
+                    "description": "",
+                    "type": "Number"
+                }
+            ]
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 93,
+            "description": "Title to prepend to each card displayed in {{#crossLink \"BBI.customization.MountSinaiCards:step1:method\"}}step1{{/crossLink}}.",
+            "itemtype": "property",
+            "name": "titles",
+            "type": "Array",
+            "default": "[]",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 100,
+            "description": "Any language used in the customization that's <strong>not</strong> accessible via the eCard part's language tab.",
+            "itemtype": "property",
+            "name": "language",
+            "type": "Object",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 106,
+            "itemtype": "property",
+            "name": "language.quantity-label",
+            "type": "String",
+            "default": "Quantity:",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 112,
+            "itemtype": "property",
+            "name": "language.quantity-error",
+            "type": "String",
+            "default": "Please enter a valid quantity.",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 118,
+            "itemtype": "property",
+            "name": "language.quantity-max",
+            "type": "String",
+            "default": "To place a larger order, please contact Holly Laws at <a href=\"mailto:hlaws@mtsinai.on.ca\">hlaws@mtsinai.on.ca</a> or 416-586-8203 ext. 3936.",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 124,
+            "itemtype": "property",
+            "name": "language.address-label",
+            "type": "String",
+            "default": "Address(es):",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 130,
+            "itemtype": "property",
+            "name": "language.address-error",
+            "type": "String",
+            "default": "Please enter an address.",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 136,
+            "itemtype": "property",
+            "name": "language.recipient-label",
+            "type": "String",
+            "default": "Recipients:",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 142,
+            "itemtype": "property",
+            "name": "language.recipeint-error",
+            "type": "String",
+            "default": "Please select a recipient.",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 148,
+            "itemtype": "property",
+            "name": "language.recipient-myself",
+            "type": "String",
+            "default": "Please ship the unaddressed cards to me. I will include my address below.",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 154,
+            "itemtype": "property",
+            "name": "language.recipient-recipients",
+            "type": "String",
+            "default": "Please ship the cards to my recipients on my behalf. I will include the recipient names and complete address below (this information can be pasted from a Word or Excel document).",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 160,
+            "itemtype": "property",
+            "name": "language.recipient-email",
+            "type": "String",
+            "default": "Please ship the cards to my recipients on my behalf. I will send a document with complete names and address to <a href=\"mailto:hlaws@mtsinai.on.ca\">hlaws@mtsinai.on.ca</a>.",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 166,
+            "itemtype": "property",
+            "name": "language.sender-label",
+            "type": "String",
+            "default": "Sender Name:",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 172,
+            "itemtype": "property",
+            "name": "language.sender-error",
+            "type": "String",
+            "default": "Please enter a sender name.",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 178,
+            "itemtype": "property",
+            "name": "language.sender-help",
+            "type": "String",
+            "default": "If you enter your sender name as \"John\", that is how your card(s) will be signed. If you prefer additional text such as, \"Love, John\", \"Your friend, John\" or \"Best wishes, John\", please enter the appropriate parting remark above.",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 184,
+            "itemtype": "property",
+            "name": "language.greeting-label",
+            "type": "String",
+            "default": "Greeting Type:",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 190,
+            "itemtype": "property",
+            "name": "language.greeting-error",
+            "type": "String",
+            "default": "Please select a greeting type.",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 196,
+            "itemtype": "property",
+            "name": "language.greeting-standard-label",
+            "type": "String",
+            "default": "Standard Greeting:",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 202,
+            "itemtype": "property",
+            "name": "language.greeting-standard",
+            "type": "Array",
+            "default": "[]",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 208,
+            "itemtype": "property",
+            "name": "language.greeting-standard-error",
+            "type": "String",
+            "default": "Please select a standard greeting.",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 214,
+            "itemtype": "property",
+            "name": "language.greeting-custom-label",
+            "type": "String",
+            "default": "Custom Greeting:",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 220,
+            "itemtype": "property",
+            "name": "language.greeting-custom-error",
+            "type": "String",
+            "default": "Please enter a custom greeting.",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 226,
+            "itemtype": "property",
+            "name": "language.next",
+            "type": "String",
+            "default": "Next",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 232,
+            "itemtype": "property",
+            "name": "language.preview-message",
+            "type": "String",
+            "default": "In celebration of the holidays, <br />a donation has been made in your honour <br />to support the purchase of life-saving <br />infant ventilators in Mount Sinai Hospital's <br /> Neonatal Intensive Care Unit",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 241,
+            "description": "Initializes the customization.",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "init",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Any options passed in are merged with the {{#crossLink \"BBI.customization.MountSinaiCards/_defaults:property\"}}defaults{{/crossLink}}.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 267,
+            "description": "Alters BBNC eCard Part Step 1 (Choose).\n\nIf titles are specified in the {{#crossLink \"BBI.customization.MountSinaiCards/init:method\"}}constructor{{/crossLink}}, adds the to the selected cards based on index.",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "step1",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 284,
+            "description": "Alters BBNC eCard Part Step 2 (Confirm).\n\nHides the selected card preview with quantity, recipient type, and addresses.",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "step2",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 454,
+            "description": "Alters BBNC eCard Part Step 3 (Personalize).\n\nHides the default email recipient information with sender name and greeting.",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "step3",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 648,
+            "description": "Alters BBNC eCard Part Step 4 (Preview).\n\nHides the email preview fields and download links and replaces them with a custom preview message.",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "step4",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 686,
+            "description": "Alters BBNC eCard Part Step 5 (Donate).\n\nCalculates the donation amount field based on the card quantity.  Updates the gift attributes.",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "step5",
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 734,
+            "description": "The next button gets overwritten several times.  This simplifies that.",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "customNext",
+            "params": [
+                {
+                    "name": "callback",
+                    "description": "Specified callback should return true or false.  If true, original next button is clicked.",
+                    "type": "Function"
+                }
+            ],
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 766,
+            "description": "Displays the requested error and scrolls to top of the eCard part.",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "showError",
+            "params": [
+                {
+                    "name": "String",
+                    "description": "selector jQuery selector for the error to display.",
+                    "optional": true
+                }
+            ],
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 778,
+            "description": "Reads sessvars by the specified key.  Does return '' (instead of undefined) for undefined properties.",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "get",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Mixed"
+            },
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        },
+        {
+            "file": "BBI.customization.MountSinaiCards.js",
+            "line": 790,
+            "description": "Stores the value using the key specified.",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "set",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Mixed"
+                }
+            ],
+            "class": "BBI.customization.MountSinaiCards",
+            "namespace": "BBI.customization"
+        }
+    ],
+    "warnings": []
+}

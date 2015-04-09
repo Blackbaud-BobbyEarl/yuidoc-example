@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>Mount Sinai: BBI.customization.MountSinai.js - Mount Sinai</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="../assets/img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse bb-navbar" role="navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="http://www.blackbaud.com" target="_blank" class="navbar-brand"><img src="../assets/img/logo-white.png" alt="Blackbaud" /></a>
+                    <a href="http://support.blackbaud.com" target="_blank" class="btn btn-default btn-xs navbar-btn pull-right">Blackbaud Support</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="jumbotron bb-jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2><a href="../">Mount Sinai Documentation</a></h2>
+                    <p>Blackbaud NetCommunity customizations developed for the Mount Sinai Hospital Foundation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h4>&nbsp;</h4>
+            </div>
+            <div class="col-md-9">
+                <h4>BBI.customization.MountSinai.js</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <ul class="bb-sidebar-nav nav nav-pills nav-stacked">
+
+    <li class=""><a href="../classes/BBI.customization.MountSinai.html">BBI.customization.MountSinai</a></li>
+
+    <li class=""><a href="../classes/BBI.customization.MountSinaiCards.html">BBI.customization.MountSinaiCards</a></li>
+
+</ul>
+
+<!--
+<ul class="dropdown-menu" role="menu">
+    
+        <li><a href="../classes/BBI.customization.MountSinai.html">BBI.customization.MountSinai</a></li>
+    
+        <li><a href="../classes/BBI.customization.MountSinaiCards.html">BBI.customization.MountSinaiCards</a></li>
+    
+</ul>
+-->
+            </div>
+            <div class="col-md-9">
+                <h1 class="file-heading">File: BBI.customization.MountSinai.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+/**
+The Mount Sinai customization was developed to customize the BBNC donation form part.
+
+    BBI.customization.MountSinai({
+    
+    });
+
+&lt;strong&gt;&lt;a href=&quot;#tab-configuration&quot;&gt;View a complete list of settings&lt;/a&gt;&lt;/strong&gt;
+
+@author Blackbaud - Bobby Earl - 2013-09-20
+@namespace BBI.customization
+@class MountSinai
+@static
+
+@requires jQuery
+@requires BBI.bbUtilities
+@requires sessvars
+**/
+
+// Verify global namespace
+var BBI = window.BBI || {};
+BBI.customization = BBI.customization || {};
+
+// Self executing
++function ($) {
+
+    // Module definition
+    BBI.customization.MountSinai = (function() {
+
+        var _settings,
+        _defaults = {
+
+            /**
+            Message character limit.
+            @property {Number} limit
+            @default 180
+            **/
+            &#x27;limit&#x27;: 180,
+
+            /**
+            Default message.
+            @property {String} message
+            @default &quot;&quot;
+            **/
+            &#x27;message&#x27;: &#x27;&#x27;,
+
+            /**
+            Placeholder text for the name field to use in a message.
+            @property {String} placeholder
+            @default &quot;__NAME__&quot;
+            **/
+            &#x27;placeholder&#x27;: &#x27;__NAME__&#x27;,
+
+            /**
+            Default text to replace the placeholder with.
+            @property {String} placeholderText
+            @default &quot;Your Name&quot;
+            **/
+            &#x27;placeholderDefault&#x27;: &#x27;Your Name&#x27;,
+
+            /**
+            Unique key for which form the customization is running on.
+            @property {String} form
+            @default &quot;mountsinai&quot;
+            **/
+            &#x27;form&#x27;: &#x27;mountsinai&#x27;,
+
+            /**
+            UI elements used in the customization.
+            @property {Object} ui
+            **/
+            &#x27;ui&#x27;: {
+
+                /**
+                Validation summary element.
+                @property {Object} ui.validation
+                **/
+                &#x27;validation&#x27;: {
+
+                    /**
+                    jQuery selector for the validation summary element.
+                    @property {String} ui.validation.selector
+                    @default &quot;div[id$=&quot;_ValidationSummary1&quot;] ul&quot;
+                    **/
+                    selector: &#x27;div[id$=&quot;_ValidationSummary1&quot;] ul&#x27;,
+
+                    /**
+                    Label text for the validation element.
+                    @property {String} ui.validation.label
+                    @default &quot;Greeting: Required&quot;
+                    **/
+                    label: &#x27;Greeting: Required&#x27;
+                },
+
+                /**
+                Comments element.
+                @property {Object} ui.comments
+                **/
+                &#x27;comments&#x27;: {
+
+                    /**
+                    jQuery selector for the comments element.
+                    @property {String} ui.comments.selector
+                    @default &quot;input[id$=&quot;_434&quot;]&quot;
+                    **/
+                    selector: &#x27;input[id$=&quot;_434&quot;]&#x27;
+                },
+
+                /**
+                Select element.
+                @property {Object} ui.select
+                **/
+                &#x27;select&#x27;: {
+
+                    /**
+                    Label text for the select element.
+                    @property {String} ui.select.label
+                    @default &quot;Choose your greeting type&quot;
+                    **/
+                    label: &#x27;Choose your greeting type&#x27;
+                },
+
+                /**
+                Greeting type element.
+                @property {Object} ui.type
+                **/
+                &#x27;type&#x27;: {
+
+                    /**
+                    jQuery ID for the greeting type element.
+                    @property {String} ui.type.id
+                    @default &quot;greeting-type&quot;
+                    **/
+                    id: &#x27;greeting-type&#x27;,
+
+                    /**
+                    Label text for the greeting type element.
+                    @property {String} ui.type.label
+                    @default &quot;Greeting Type:&quot;
+                    **/
+                    label: &#x27;Greeting Type:&#x27;,
+
+                    /**
+                    jQuery selector for the greeting type element&#x27;s corresponding gift attribute.
+                    @property {String} ui.type.attribute
+                    @default &quot;select[id$=&quot;_433&quot;]&quot;
+                    **/
+                    attribute: &#x27;select[id$=&quot;_433&quot;]&#x27;
+                },
+
+                /**
+                Name element.
+                @property {Object} ui.name
+                **/
+                &#x27;name&#x27;: {
+
+                    /**
+                    jQuery ID for the name element.
+                    @property {String} ui.name.id
+                    @default &quot;greeting-name&quot;
+                    **/
+                    id: &#x27;greeting-name&#x27;,
+
+                    /**
+                    Label text for the name element.
+                    @property {String} ui.name.label
+                    @default &quot;First, Last or Family Name:&quot;
+                    **/
+                    label: &#x27;First, Last or Family Name:&#x27;
+                },
+
+                /**
+                Message element.
+                @property {Object} ui.message
+                **/
+                &#x27;message&#x27;: {
+
+                    /**
+                    jQuery ID for the message element.
+                    @property {String} ui.message.id
+                    @default &quot;greeting-message&quot;
+                    **/
+                    id: &#x27;greeting-message&#x27;,
+
+                    /**
+                    Label text for the message element.
+                    @property {String} ui.message.label
+                    @default &quot;Custom Message:&quot;
+                    **/
+                    label: &#x27;Custom Message:&#x27;
+                },
+
+                /**
+                Preview element.
+                @property {Object} ui.preview
+                **/
+                &#x27;preview&#x27;: {
+
+                    /**
+                    jQuery ID for the preview element.
+                    @property {String} ui.preview.id
+                    @default &quot;greeting-preview&quot;
+                    **/
+                    id: &#x27;greeting-preview&#x27;,
+
+                    /**
+                    Label text for the preview element.
+                    @property {String} ui.preview.label
+                    @default &quot;Preview:&quot;
+                    **/
+                    label: &#x27;Preview:&#x27;
+                },
+
+                /**
+                Count element.
+                @property {Object} ui.count
+                **/
+                &#x27;count&#x27;: {
+
+                    /**
+                    jQuery ID for the count element.
+                    @property {String} ui.count.id
+                    @default &quot;greeting-count&quot;
+                    **/
+                    id: &#x27;greeting-count&#x27;
+                }
+            }
+        },
+
+        _public: {
+
+            /**
+            Initializes the customization, only if not in editor mode.
+            @protected
+            @method init
+            @param {Object} [options] {{#crossLink &quot;BBI.customization.MountSinai/_defaults:property&quot;}}View a complete list of settings{{/crossLink}}
+            **/
+            init: function(options) {
+
+                // Merge defaults
+                _settings = $.extend({}, true, _defaults, options);
+
+                // Fix scoping
+                var module = this;
+
+                // Wait for the DOM
+                $(function() {
+
+                    // Display editor message or execute customization
+                    if (BBI.utilities.isEditor) {
+                        $(&#x27;.part-name&#x27;).show().css(&#x27;padding-left&#x27;, &#x27;40px&#x27;);
+                    } else {
+
+                        // Clear any previous responses
+                        sessvars[&#x27;mountsinai-&#x27; + _settings.form] = {};
+
+                        // Bind to events
+                        module.bind();
+                    }
+
+                });
+
+                // Wait for NetCommunity PageLoad
+                Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(function() {
+
+                    // This doesn&#x27;t run in editor mode
+                    if (!BBI.utilities.isEditor) {
+
+                        module.setup();
+
+                        // Make sure we&#x27;ve saved in the sessvars before
+                        if (sessvars[&#x27;mountsinai-&#x27; + _settings.form] !== undefined) {
+
+                            // Type
+                            if (sessvars[&#x27;mountsinai-&#x27; + _settings.form].type !== undefined) {
+                                $(&#x27;#&#x27; + _settings.ui.type.id).prop(&#x27;selectedIndex&#x27;, sessvars[&#x27;mountsinai-&#x27; + _settings.form].type);
+                            }
+
+                            // Name
+                            if (sessvars[&#x27;mountsinai-&#x27; + _settings.form].name !== undefined) {
+                                $(&#x27;#&#x27; + _settings.ui.name.id).val(sessvars[&#x27;mountsinai-&#x27; + _settings.form].name);
+                            }
+
+                            // Message
+                            if (sessvars[&#x27;mountsinai-&#x27; + _settings.form].message !== undefined) {
+                                $(&#x27;#&#x27; + _settings.ui.message.id).val(sessvars[&#x27;mountsinai-&#x27; + _settings.form].message);
+                            }
+
+                            // Show correct rows
+                            module.toggle();
+
+                            // Sync preview &amp; count with messages
+                            module.update();
+                        }
+
+                        // Add greeting type error
+                        if ($(_settings.ui.validation.selector).length &amp;&amp; $(&#x27;#&#x27; + _settings.ui.name.id).val() == &#x27;&#x27; &amp;&amp; $(&#x27;#&#x27; + _settings.ui.message.id).val() == &#x27;&#x27;) {
+                            $(_settings.ui.validation.selector).prepend(&#x27;&lt;li&gt;&#x27; + _settings.ui.validation.label + &#x27;&lt;/li&gt;&#x27;);
+                        }
+                    }
+
+                });
+            },
+
+            /**
+            Create custom UI.
+            @protected
+            @method setup
+            **/
+            setup: function() {
+                var html = &#x27;&#x27;
+                    + &#x27;&lt;tr&gt;&#x27;
+                    + &#x27; &lt;td class=&quot;BBFieldCaption DonationCaptureFieldCaption&quot;&gt;&#x27;
+                    + &#x27;     &lt;label for=&quot;&#x27; + _settings.ui.type.id + &#x27;&quot;&gt;&#x27; + _settings.ui.type.label + &#x27;&lt;/label&gt;&#x27;
+                    + &#x27; &lt;/td&gt;&#x27;
+                    + &#x27; &lt;td class=&quot;BBFieldControlCell DonationCaptureFieldControlCell&quot;&gt;&#x27;
+                    + &#x27;     &lt;select id=&quot;&#x27; + _settings.ui.type.id + &#x27;&quot; class=&quot;BBFormSelectList DonationCaptureSelectList&quot;&gt;&#x27;
+                    + &#x27;         &lt;option&gt;&#x27; + _settings.ui.select.label + &#x27;&lt;/option&gt;&#x27;
+                    + &#x27;         &lt;option&gt;Standard&lt;/option&gt;&#x27;
+                    + &#x27;         &lt;option&gt;Personalized&lt;/option&gt;&#x27;
+                    + &#x27;     &lt;/select&gt;&#x27;
+                    + &#x27; &lt;/td&gt;&#x27;
+                    + &#x27; &lt;td class=&quot;BBFormRequiredFieldMarker DonationCaptureRequiredFieldMarker&quot;&gt;*&lt;/td&gt;&#x27;
+                    + &#x27;&lt;/tr&gt;&#x27;
+                    + &#x27;&lt;tr style=&quot;display: none&quot;&gt;&#x27;
+                    + &#x27; &lt;td class=&quot;BBFieldCaption DonationCaptureFieldCaption&quot;&gt;&#x27;
+                    + &#x27;     &lt;label for=&quot;&#x27; + _settings.ui.name.id + &#x27;&quot;&gt;&#x27; + _settings.ui.name.label + &#x27;&lt;/label&gt;&#x27;
+                    + &#x27; &lt;/td&gt;&#x27;
+                    + &#x27; &lt;td class=&quot;BBFieldControlCell DonationCaptureFieldControlCell&quot;&gt;&#x27;
+                    + &#x27;     &lt;textarea id=&quot;&#x27; + _settings.ui.name.id + &#x27;&quot; class=&quot;BBFormTextArea DonationCaptureTextArea&quot;&gt;&lt;/textarea&gt;&#x27;
+                    + &#x27; &lt;/td&gt;&#x27;
+                    + &#x27; &lt;td class=&quot;BBFormRequiredFieldMarker DonationCaptureRequiredFieldMarker&quot;&gt;*&lt;/td&gt;&#x27;
+                    + &#x27;&lt;/tr&gt;&#x27;
+                    + &#x27;&lt;tr style=&quot;display: none&quot;&gt;&#x27;
+                    + &#x27; &lt;td class=&quot;BBFieldCaption DonationCaptureFieldCaption&quot;&gt;&#x27;
+                    + &#x27;     &lt;label for=&quot;&#x27; + _settings.ui.message.id + &#x27;&quot;&gt;&#x27; + _settings.ui.message.label + &#x27;&lt;/label&gt;&#x27;
+                    + &#x27; &lt;/td&gt;&#x27;
+                    + &#x27; &lt;td class=&quot;BBFieldControlCell DonationCaptureFieldControlCell&quot;&gt;&#x27;
+                    + &#x27;     &lt;textarea id=&quot;&#x27; + _settings.ui.message.id + &#x27;&quot; class=&quot;BBFormTextArea DonationCaptureTextArea&quot;&gt;&lt;/textarea&gt;&#x27;
+                    + &#x27; &lt;/td&gt;&#x27;
+                    + &#x27; &lt;td class=&quot;BBFormRequiredFieldMarker DonationCaptureRequiredFieldMarker&quot;&gt;*&lt;/td&gt;&#x27;
+                    + &#x27;&lt;/tr&gt;&#x27;
+                    + &#x27;&lt;tr style=&quot;display: none&quot;&gt;&#x27;
+                    + &#x27; &lt;td class=&quot;BBFieldCaption DonationCaptureFieldCaption&quot;&gt;&#x27;
+                    + &#x27;     Preview:&#x27;
+                    + &#x27; &lt;/td&gt;&#x27;
+                    + &#x27; &lt;td class=&quot;BBFieldControlCell DonationCaptureFieldControlCell&quot;&gt;&#x27;
+                    + &#x27;     &lt;div id=&quot;&#x27; + _settings.ui.preview.id + &#x27;&quot;&gt;&lt;/div&gt;&#x27;
+                    + &#x27; &lt;/td&gt;&#x27;
+                    + &#x27; &lt;td&gt;&lt;/td&gt;&#x27;
+                    + &#x27;&lt;/tr&gt;&#x27;
+                    + &#x27;&lt;tr style=&quot;display: none&quot;&gt;&#x27;
+                    + &#x27; &lt;td class=&quot;BBFieldCaption DonationCaptureFieldCaption&quot;&gt;&#x27;
+                    + &#x27; &lt;/td&gt;&#x27;
+                    + &#x27; &lt;td class=&quot;BBFieldControlCell DonationCaptureFieldControlCell&quot;&gt;&#x27;
+                    + &#x27;     &lt;div id=&quot;&#x27; + _settings.ui.count.id + &#x27;&quot; style=&quot;color: #CCC&quot;&gt;&#x27;
+                    + &#x27; &lt;/td&gt;&#x27;
+                    + &#x27; &lt;td&gt;&lt;/td&gt;&#x27;
+                    + &#x27;&lt;/tr&gt;&#x27;;
+
+                // Hide comments field
+                $(_settings.ui.comments.selector)
+                    .closest(&#x27;tr&#x27;)
+                    .hide()
+                    .before(html);
+
+                // Hide attribute field
+                $(_settings.ui.type.attribute).closest(&#x27;tr&#x27;).hide();
+            },
+
+            /**
+            Update the preview and count.
+            @protected
+            @method update
+            **/
+            update: function() {
+                var type = $(&#x27;#&#x27; + _settings.ui.type.id).prop(&#x27;selectedIndex&#x27;),
+                    name = $(&#x27;#&#x27; + _settings.ui.name.id).val(),
+                    message = $(&#x27;#&#x27; + _settings.ui.message.id).val(),
+                    html, text;
+
+                switch (type) {
+                    case 0:
+                        html = &#x27;&#x27;;
+                    break;
+                    case 1:
+                        html = _settings.message.replace(_settings.placeholder, name.length &gt; 0 ? name : _settings.placeholderDefault);
+                    break;
+                    case 2:
+                        html = message;
+                    break;
+                }
+
+                // Save message
+                sessvars[&#x27;mountsinai-&#x27; + _settings.form] = {
+                    type: type,
+                    name: name,
+                    message: message
+                };
+
+                // Set message
+                $(&#x27;#&#x27; + _settings.ui.preview.id).html(html);
+                text = $(&#x27;#&#x27; + _settings.ui.preview.id).text();
+
+                $(_settings.ui.comments.selector).val(text);
+                $(&#x27;#&#x27; + _settings.ui.count.id).html(_settings.limit - text.length + &#x27; characters remaining&#x27;);
+            },
+
+            /**
+            Display the correct fields
+            @protected
+            @method toggle
+            */
+            toggle: function() {
+                var type = $(&#x27;#&#x27; + _settings.ui.type.id).prop(&#x27;selectedIndex&#x27;),
+                    name = $(&#x27;#&#x27; + _settings.ui.name.id).closest(&#x27;tr&#x27;),
+                    message = $(&#x27;#&#x27; + _settings.ui.message.id).closest(&#x27;tr&#x27;),
+                    preview = $(&#x27;#&#x27; + _settings.ui.preview.id).closest(&#x27;tr&#x27;),
+                    count = $(&#x27;#&#x27; + _settings.ui.count.id).closest(&#x27;tr&#x27;),
+                    typeAttribute = $(_settings.ui.type.attribute);
+
+                switch(type) {
+                    case 0:
+                        name.toggle(false);
+                        message.toggle(false);
+                        preview.toggle(false);
+                        count.toggle(false);
+                    break;
+                    case 1:
+                        name.toggle(true);
+                        message.toggle(false);
+                        preview.toggle(true);
+                        count.toggle(true);
+                        typeAttribute.prop(&#x27;selectedIndex&#x27;, 0);
+                    break;
+                    case 2:
+                        name.toggle(false);
+                        message.toggle(true);
+                        preview.toggle(true);
+                        count.toggle(true);
+                        typeAttribute.prop(&#x27;selectedIndex&#x27;, 1);
+                    break;
+                }
+            },
+
+            /**
+            Reset the fields to their default values
+            @protected
+            @method reset
+            **/
+            clear: function() {
+                $(&#x27;#&#x27; + _settings.ui.name.id).val(&#x27;&#x27;);
+                $(&#x27;#&#x27; + _settings.ui.message.id).val(&#x27;&#x27;);
+            },
+
+            /**
+            Bind to keyup event for name and message fields.
+            Bind to change event for type select, clearing name and messages fields.
+            @protected
+            @method bind
+            */
+            bind: function() {
+                var module = this;
+                $(document).on(&#x27;keyup&#x27;, &#x27;#&#x27; + _settings.ui.name.id, function() {
+                    module.update();
+                });
+                $(document).on(&#x27;keyup&#x27;, &#x27;#&#x27; + _settings.ui.message.id, function() {
+                    module.update();
+                });
+                $(document).on(&#x27;change&#x27;, &#x27;#&#x27; + _settings.ui.type.id, function() {
+                    module.clear();
+                    module.toggle();
+                    module.update();
+                });
+            }
+
+        };
+
+        // Expose public
+        return _public;
+
+    }()); // module
+
+}(jQuery);
+
+/*
+sessvars ver 1.01
+- JavaScript based session object
+copyright 2008 Thomas Frank
+
+This EULA grants you the following rights:
+
+Installation and Use. You may install and use an unlimited number of copies of the SOFTWARE PRODUCT.
+
+Reproduction and Distribution. You may reproduce and distribute an unlimited number of copies of the SOFTWARE PRODUCT either in whole or in part; each copy should include all copyright and trademark notices, and shall be accompanied by a copy of this EULA. Copies of the SOFTWARE PRODUCT may be distributed as a standalone product or included with your own product.
+
+Commercial Use. You may sell for profit and freely distribute scripts and/or compiled scripts that were created with the SOFTWARE PRODUCT.
+
+v 1.0 --&gt; 1.01
+sanitizer added to toObject-method &amp; includeFunctions flag now defaults to false
+
+*/
+
+sessvars=function(){
+
+    var x={};
+    
+    x.$={
+        prefs:{
+            memLimit:2000,
+            autoFlush:true,
+            crossDomain:false,
+            includeProtos:false,
+            includeFunctions:false
+        },
+        parent:x,
+        clearMem:function(){
+            for(var i in this.parent){if(i!=&quot;$&quot;){this.parent[i]=undefined}};
+            this.flush();
+        },
+        usedMem:function(){
+            x={};
+            return Math.round(this.flush(x)/1024);
+        },
+        usedMemPercent:function(){
+            return Math.round(this.usedMem()/this.prefs.memLimit);
+        },
+        flush:function(x){
+            var y,o={},j=this.$$;
+            x=x||top;
+            for(var i in this.parent){o[i]=this.parent[i]};
+            o.$=this.prefs;
+            j.includeProtos=this.prefs.includeProtos;
+            j.includeFunctions=this.prefs.includeFunctions;
+            y=this.$$.make(o);
+            if(x!=top){return y.length};
+            if(y.length/1024&gt;this.prefs.memLimit){return false}
+            x.name=y;
+            return true;
+        },
+        getDomain:function(){
+                var l=location.href
+                l=l.split(&quot;///&quot;).join(&quot;//&quot;);
+                l=l.substring(l.indexOf(&quot;://&quot;)+3).split(&quot;/&quot;)[0];
+                while(l.split(&quot;.&quot;).length&gt;2){l=l.substring(l.indexOf(&quot;.&quot;)+1)};
+                return l
+        },
+        debug:function(t){
+            var t=t||this,a=arguments.callee;
+            if(!document.body){setTimeout(function(){a(t)},200);return};
+            t.flush();
+            var d=document.getElementById(&quot;sessvarsDebugDiv&quot;);
+            if(!d){d=document.createElement(&quot;div&quot;);document.body.insertBefore(d,document.body.firstChild)};
+            d.id=&quot;sessvarsDebugDiv&quot;;
+            d.innerHTML=&#x27;&lt;div style=&quot;line-height:20px;padding:5px;font-size:11px;font-family:Verdana,Arial,Helvetica;&#x27;+
+                        &#x27;z-index:10000;background:#FFFFCC;border: 1px solid #333;margin-bottom:12px&quot;&gt;&#x27;+
+                        &#x27;&lt;b style=&quot;font-family:Trebuchet MS;font-size:20px&quot;&gt;sessvars.js - debug info:&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&#x27;+
+                        &#x27;Memory usage: &#x27;+t.usedMem()+&#x27; Kb (&#x27;+t.usedMemPercent()+&#x27;%)&amp;nbsp;&amp;nbsp;&amp;nbsp;&#x27;+
+                        &#x27;&lt;span style=&quot;cursor:pointer&quot;&gt;&lt;b&gt;[Clear memory]&lt;/b&gt;&lt;/span&gt;&lt;br/&gt;&#x27;+
+                        top.name.split(&#x27;\n&#x27;).join(&#x27;&lt;br/&gt;&#x27;)+&#x27;&lt;/div&gt;&#x27;;
+            d.getElementsByTagName(&#x27;span&#x27;)[0].onclick=function(){t.clearMem();location.reload()}
+        },
+        init:function(){
+            var o={}, t=this;
+            try {o=this.$$.toObject(top.name)} catch(e){o={}};
+            this.prefs=o.$||t.prefs;
+            if(this.prefs.crossDomain || this.prefs.currentDomain==this.getDomain()){
+                for(var i in o){this.parent[i]=o[i]};
+            }
+            else {
+                this.prefs.currentDomain=this.getDomain();
+            };
+            this.parent.$=t;
+            t.flush();
+            var f=function(){if(t.prefs.autoFlush){t.flush()}};
+            if(window[&quot;addEventListener&quot;]){addEventListener(&quot;unload&quot;,f,false)}
+            else if(window[&quot;attachEvent&quot;]){window.attachEvent(&quot;onunload&quot;,f)}
+            else {this.prefs.autoFlush=false};
+        }
+    };
+    
+    x.$.$$={
+        compactOutput:false,        
+        includeProtos:false,    
+        includeFunctions: false,
+        detectCirculars:true,
+        restoreCirculars:true,
+        make:function(arg,restore) {
+            this.restore=restore;
+            this.mem=[];this.pathMem=[];
+            return this.toJsonStringArray(arg).join(&#x27;&#x27;);
+        },
+        toObject:function(x){
+            if(!this.cleaner){
+                try{this.cleaner=new RegExp(&#x27;^(&quot;(\\\\.|[^&quot;\\\\\\n\\r])*?&quot;|[,:{}\\[\\]0-9.\\-+Eaeflnr-u \\n\\r\\t])+?$&#x27;)}
+                catch(a){this.cleaner=/^(true|false|null|\[.*\]|\{.*\}|&quot;.*&quot;|\d+|\d+\.\d+)$/}
+            };
+            if(!this.cleaner.test(x)){return {}};
+            eval(&quot;this.myObj=&quot;+x);
+            if(!this.restoreCirculars || !alert){return this.myObj};
+            if(this.includeFunctions){
+                var x=this.myObj;
+                for(var i in x){if(typeof x[i]==&quot;string&quot; &amp;&amp; !x[i].indexOf(&quot;JSONincludedFunc:&quot;)){
+                    x[i]=x[i].substring(17);
+                    eval(&quot;x[i]=&quot;+x[i])
+                }}
+            };
+            this.restoreCode=[];
+            this.make(this.myObj,true);
+            var r=this.restoreCode.join(&quot;;&quot;)+&quot;;&quot;;
+            eval(&#x27;r=r.replace(/\\W([0-9]{1,})(\\W)/g,&quot;[$1]$2&quot;).replace(/\\.\\;/g,&quot;;&quot;)&#x27;);
+            eval(r);
+            return this.myObj
+        },
+        toJsonStringArray:function(arg, out) {
+            if(!out){this.path=[]};
+            out = out || [];
+            var u; // undefined
+            switch (typeof arg) {
+            case &#x27;object&#x27;:
+                this.lastObj=arg;
+                if(this.detectCirculars){
+                    var m=this.mem; var n=this.pathMem;
+                    for(var i=0;i&lt;m.length;i++){
+                        if(arg===m[i]){
+                            out.push(&#x27;&quot;JSONcircRef:&#x27;+n[i]+&#x27;&quot;&#x27;);return out
+                        }
+                    };
+                    m.push(arg); n.push(this.path.join(&quot;.&quot;));
+                };
+                if (arg) {
+                    if (arg.constructor == Array) {
+                        out.push(&#x27;[&#x27;);
+                        for (var i = 0; i &lt; arg.length; ++i) {
+                            this.path.push(i);
+                            if (i &gt; 0)
+                                out.push(&#x27;,\n&#x27;);
+                            this.toJsonStringArray(arg[i], out);
+                            this.path.pop();
+                        }
+                        out.push(&#x27;]&#x27;);
+                        return out;
+                    } else if (typeof arg.toString != &#x27;undefined&#x27;) {
+                        out.push(&#x27;{&#x27;);
+                        var first = true;
+                        for (var i in arg) {
+                            if(!this.includeProtos &amp;&amp; arg[i]===arg.constructor.prototype[i]){continue};
+                            this.path.push(i);
+                            var curr = out.length; 
+                            if (!first)
+                                out.push(this.compactOutput?&#x27;,&#x27;:&#x27;,\n&#x27;);
+                            this.toJsonStringArray(i, out);
+                            out.push(&#x27;:&#x27;);                    
+                            this.toJsonStringArray(arg[i], out);
+                            if (out[out.length - 1] == u)
+                                out.splice(curr, out.length - curr);
+                            else
+                                first = false;
+                            this.path.pop();
+                        }
+                        out.push(&#x27;}&#x27;);
+                        return out;
+                    }
+                    return out;
+                }
+                out.push(&#x27;null&#x27;);
+                return out;
+            case &#x27;unknown&#x27;:
+            case &#x27;undefined&#x27;:
+            case &#x27;function&#x27;:
+                if(!this.includeFunctions){out.push(u);return out};
+                arg=&quot;JSONincludedFunc:&quot;+arg;
+                out.push(&#x27;&quot;&#x27;);
+                var a=[&#x27;\n&#x27;,&#x27;\\n&#x27;,&#x27;\r&#x27;,&#x27;\\r&#x27;,&#x27;&quot;&#x27;,&#x27;\\&quot;&#x27;];
+                arg+=&quot;&quot;; for(var i=0;i&lt;6;i+=2){arg=arg.split(a[i]).join(a[i+1])};
+                out.push(arg);
+                out.push(&#x27;&quot;&#x27;);
+                return out;
+            case &#x27;string&#x27;:
+                if(this.restore &amp;&amp; arg.indexOf(&quot;JSONcircRef:&quot;)==0){
+                    this.restoreCode.push(&#x27;this.myObj.&#x27;+this.path.join(&quot;.&quot;)+&quot;=&quot;+arg.split(&quot;JSONcircRef:&quot;).join(&quot;this.myObj.&quot;));
+                };
+                out.push(&#x27;&quot;&#x27;);
+                var a=[&#x27;\n&#x27;,&#x27;\\n&#x27;,&#x27;\r&#x27;,&#x27;\\r&#x27;,&#x27;&quot;&#x27;,&#x27;\\&quot;&#x27;];
+                arg+=&quot;&quot;; for(var i=0;i&lt;6;i+=2){arg=arg.split(a[i]).join(a[i+1])};
+                out.push(arg);
+                out.push(&#x27;&quot;&#x27;);
+                return out;
+            default:
+                out.push(String(arg));
+                return out;
+            }
+        }
+    };
+    
+    x.$.init();
+    return x;
+}()
+    </pre>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="../assets/js/app.js"></script>
+</body>
+</html>

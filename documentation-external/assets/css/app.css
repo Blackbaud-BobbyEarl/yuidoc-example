@@ -1,0 +1,73 @@
+/**
+* Global
+**/
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+	color: #8cbe4f;
+}
+
+a:hover,
+a:focus {
+	color: #79A444;
+	color: #4F7124;
+}
+
+/**
+* Navbar
+**/
+.bb-navbar {
+	background: #50535a;
+	border: 0;
+	border-radius: 0;
+	margin-bottom: 0;
+}
+
+/**
+* Jumbotron
+**/
+.bb-jumbotron a {
+	text-decoration: none;
+}
+
+.bb-jumbotron h2 {
+	color: #8cbe4f;
+}
+
+/**
+* Sidebar
+**/
+.bb-sidebar-nav {
+	margin-bottom: 30px;
+}
+
+.bb-sidebar-nav .active a {
+	background: #8cbe4f !important;
+}
+
+/**
+* Tabs
+**/
+.bb-nav-tabs {
+	margin-bottom: 20px;
+}
+
+.bb-tab-content h2 {
+	font-size: 14px;
+}
+
+/**
+* Content
+**/
+.bb-properties-table th {
+	border-top: 0 !important;
+}
+
+/**
+* Utilities
+**/
+.bb-nowrap {
+	white-space: nowrap;
+}

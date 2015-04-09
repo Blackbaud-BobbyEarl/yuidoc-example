@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>Mount Sinai: BBI.customization.MountSinai - Mount Sinai</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="../assets/img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse bb-navbar" role="navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="http://www.blackbaud.com" target="_blank" class="navbar-brand"><img src="../assets/img/logo-white.png" alt="Blackbaud" /></a>
+                    <a href="http://support.blackbaud.com" target="_blank" class="btn btn-default btn-xs navbar-btn pull-right">Blackbaud Support</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="jumbotron bb-jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2><a href="../">Mount Sinai Documentation</a></h2>
+                    <p>Blackbaud NetCommunity customizations developed for the Mount Sinai Hospital Foundation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h4>&nbsp;</h4>
+            </div>
+            <div class="col-md-9">
+                <h4>BBI.customization.MountSinai</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <ul class="bb-sidebar-nav nav nav-pills nav-stacked">
+
+    <li class="active"><a href="../classes/BBI.customization.MountSinai.html">BBI.customization.MountSinai</a></li>
+
+    <li class=""><a href="../classes/BBI.customization.MountSinaiCards.html">BBI.customization.MountSinaiCards</a></li>
+
+</ul>
+
+<!--
+<ul class="dropdown-menu" role="menu">
+    
+        <li><a href="../classes/BBI.customization.MountSinai.html">BBI.customization.MountSinai</a></li>
+    
+        <li><a href="../classes/BBI.customization.MountSinaiCards.html">BBI.customization.MountSinaiCards</a></li>
+    
+</ul>
+-->
+            </div>
+            <div class="col-md-9">
+                <!-- This gets automatically parsed and added to the nav -->
+<div class="class-description">
+    <p>The Mount Sinai customization was developed to customize the BBNC donation form part.</p>
+<pre class="code prettyprint"><code>BBI.customization.MountSinai({
+
+});</code></pre>
+<p><strong><a href="#tab-configuration">View a complete list of settings</a></strong></p>
+
+</div>
+
+
+    <ul class="nav nav-tabs bb-nav-tabs">
+        <li><a href="#tab-configuration">Configuration</a></li>
+    </ul>
+    <div class="tab-content bb-tab-content">
+        <div class="tab-pane" id="tab-configuration">
+            <div class="table-responsive">
+                <table class="table bb-properties-table table-hover table-striped">
+                    <tr>
+                        <th>Property</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">form</span>
+    </td>
+    <td>
+        <p>Unique key for which form the customization is running on.</p>
+
+    </td>
+    <td>
+        "mountsinai"
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">limit</span>
+    </td>
+    <td>
+        <p>Message character limit.</p>
+
+    </td>
+    <td>
+        180
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">message</span>
+    </td>
+    <td>
+        <p>Default message.</p>
+
+    </td>
+    <td>
+        ""
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">placeholder</span>
+    </td>
+    <td>
+        <p>Placeholder text for the name field to use in a message.</p>
+
+    </td>
+    <td>
+        "__NAME__"
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">placeholderText</span>
+    </td>
+    <td>
+        <p>Default text to replace the placeholder with.</p>
+
+    </td>
+    <td>
+        "Your Name"
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">ui</span>
+    </td>
+    <td>
+        <p>UI elements used in the customization.</p>
+
+    </td>
+    <td>
+        
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">ui.comments</span>
+    </td>
+    <td>
+        <p>Comments element.</p>
+
+    </td>
+    <td>
+        
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">ui.comments.selector</span>
+    </td>
+    <td>
+        <p>jQuery selector for the comments element.</p>
+
+    </td>
+    <td>
+        "input[id$="_434"]"
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">ui.count</span>
+    </td>
+    <td>
+        <p>Count element.</p>
+
+    </td>
+    <td>
+        
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">ui.count.id</span>
+    </td>
+    <td>
+        <p>jQuery ID for the count element.</p>
+
+    </td>
+    <td>
+        "greeting-count"
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">ui.message</span>
+    </td>
+    <td>
+        <p>Message element.</p>
+
+    </td>
+    <td>
+        
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">ui.message.id</span>
+    </td>
+    <td>
+        <p>jQuery ID for the message element.</p>
+
+    </td>
+    <td>
+        "greeting-message"
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">ui.message.label</span>
+    </td>
+    <td>
+        <p>Label text for the message element.</p>
+
+    </td>
+    <td>
+        "Custom Message:"
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">ui.name</span>
+    </td>
+    <td>
+        <p>Name element.</p>
+
+    </td>
+    <td>
+        
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">ui.name.id</span>
+    </td>
+    <td>
+        <p>jQuery ID for the name element.</p>
+
+    </td>
+    <td>
+        "greeting-name"
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">ui.name.label</span>
+    </td>
+    <td>
+        <p>Label text for the name element.</p>
+
+    </td>
+    <td>
+        "First, Last or Family Name:"
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">ui.preview</span>
+    </td>
+    <td>
+        <p>Preview element.</p>
+
+    </td>
+    <td>
+        
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">ui.preview.id</span>
+    </td>
+    <td>
+        <p>jQuery ID for the preview element.</p>
+
+    </td>
+    <td>
+        "greeting-preview"
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">ui.preview.label</span>
+    </td>
+    <td>
+        <p>Label text for the preview element.</p>
+
+    </td>
+    <td>
+        "Preview:"
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">ui.select</span>
+    </td>
+    <td>
+        <p>Select element.</p>
+
+    </td>
+    <td>
+        
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">ui.select.label</span>
+    </td>
+    <td>
+        <p>Label text for the select element.</p>
+
+    </td>
+    <td>
+        "Choose your greeting type"
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">ui.type</span>
+    </td>
+    <td>
+        <p>Greeting type element.</p>
+
+    </td>
+    <td>
+        
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">ui.type.attribute</span>
+    </td>
+    <td>
+        <p>jQuery selector for the greeting type element&#39;s corresponding gift attribute.</p>
+
+    </td>
+    <td>
+        "select[id$="_433"]"
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">ui.type.id</span>
+    </td>
+    <td>
+        <p>jQuery ID for the greeting type element.</p>
+
+    </td>
+    <td>
+        "greeting-type"
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">ui.type.label</span>
+    </td>
+    <td>
+        <p>Label text for the greeting type element.</p>
+
+    </td>
+    <td>
+        "Greeting Type:"
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">ui.validation</span>
+    </td>
+    <td>
+        <p>Validation summary element.</p>
+
+    </td>
+    <td>
+        
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">ui.validation.label</span>
+    </td>
+    <td>
+        <p>Label text for the validation element.</p>
+
+    </td>
+    <td>
+        "Greeting: Required"
+    </td>
+</tr>
+
+                    
+                        <tr>
+    <td>
+        <span class="bb-nowrap">ui.validation.selector</span>
+    </td>
+    <td>
+        <p>jQuery selector for the validation summary element.</p>
+
+    </td>
+    <td>
+        "div[id$="_ValidationSummary1"] ul"
+    </td>
+</tr>
+
+                    
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="../assets/js/app.js"></script>
+</body>
+</html>
